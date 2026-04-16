@@ -1,4 +1,7 @@
 # wonju
 원주고등학교 소개
 <hr>
-<mark><strong>파도99[오룡전멸]</strong></mark>
+<mark><strong>領역 wonju
+원주고등학교 소개
+<hr>
+<mark><strong>領域展開 『無量空処』</strong></mark>
