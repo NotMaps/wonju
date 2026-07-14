@@ -11,6 +11,26 @@
 
 
 <style>
+#message {
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+
+    background:black;
+    color:white;
+
+    padding:20px 40px;
+
+    border-radius:30px;
+
+    font-size:25px;
+
+    box-shadow:0 0 20px red;
+
+    z-index:1000;
+}
 
 * {
     box-sizing:border-box;
@@ -282,7 +302,9 @@ img {
 <h3>킬러퀸</h3>
 
 
-<img src="media/kira.png" alt="킬러퀸">
+<img src="media/kira.png" 
+     alt="킬러퀸"
+     onclick="killerQueen()">
 
 
 </section>
@@ -293,7 +315,29 @@ img {
 
 </div>
 
+<div id="message">
+    킬러퀸은 이미 마우스를 만졌다
+</div>
 
+
+<script>
+
+function killerQueen(){
+
+    let message = document.getElementById("message");
+
+    message.style.display = "block";
+
+
+    setTimeout(function(){
+
+        message.style.display = "none";
+
+    },1000);
+
+}
+
+</script>
 </body>
 
 </html>
