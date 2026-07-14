@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>파도 90 흑관</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:black;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:"맑은 고딕", sans-serif;
+}
+
+
+/* 첫 번째 이미지 */
+#image6{
+    width:350px;
+    cursor:pointer;
+    z-index:5;
+    transition:0.5s;
+}
+
+
+#image6:hover{
+    transform:scale(1.08);
+}
+
+
+
+/* 두 번째 이미지 */
+#image7{
+    position:absolute;
+    width:520px;
+    opacity:0;
+    z-index:2;
+
+    transition:
+    opacity 3s ease;
+}
+
+
+
+/* 대사 */
+#dialog{
+
+    position:absolute;
+
+    top:72%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:90%;
+
+    text-align:center;
+
+    font-size:32px;
+
+    line-height:1.7;
+
+    color:#dca0ff;
+
+    opacity:0;
+
+    z-index:10;
+
+
+    text-shadow:
+
+    0 0 10px #c000ff,
+    0 0 25px #a000ff,
+    0 0 50px #7200ff;
+
+}
+
+
+
+/* 파도 90 흑관 */
+#spell{
+
+    position:absolute;
+
+    top:45%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:100%;
+
+    text-align:center;
+
+
+    font-size:70px;
+
+    font-weight:bold;
+
+
+    color:white;
+
+    opacity:0;
+
+    z-index:11;
+
+
+
+    text-shadow:
+
+    0 0 15px white,
+    0 0 30px #dc8cff,
+    0 0 60px #a000ff,
+    0 0 120px #7000ff;
+
+}
+
+
+
+
+/* 천천히 등장 */
+.fadeIn{
+
+    animation:
+    fadeIn 4s forwards;
+
+}
+
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translate(-50%,40px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translate(-50%,0);
+
+    }
+
+}
+
+
+
+
+/*
+=================================
+흑관 작은 직사각형 효과
+=================================
+*/
+
+
+#blackBoxContainer{
+
+    position:fixed;
+
+    left:0;
+
+    bottom:0;
+
+    width:100vw;
+
+    height:100vh;
+
+    z-index:50;
+
+    pointer-events:none;
+
+}
+
+
+
+/* 생성되는 작은 흑관 조각 */
+
+.blackBox{
+
+
+    position:absolute;
+
+
+    background:black;
+
+
+    border:2px solid #a000ff;
+
+
+    box-shadow:
+
+
+    0 0 8px #c000ff,
+
+    0 0 20px #9000ff,
+
+    inset 0 0 10px #500080;
+
+
+
+    opacity:0;
+
+
+
+    animation:
+
+    appearBox 0.5s forwards;
+
+
+}
+
+
+
+
+@keyframes appearBox{
+
+
+    from{
+
+        opacity:0;
+
+        transform:
+        scale(0.5);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        scale(1);
+
+    }
+
+
+}
+
+
+
+
+
+
+/* 마지막 완전 암전 */
+
+#finalBlack{
+
+
+    position:fixed;
+
+
+    width:100vw;
+
+    height:100vh;
+
+
+    left:0;
+
+    top:0;
+
+
+    background:black;
+
+
+    opacity:0;
+
+
+    z-index:100;
+
+
+    pointer-events:none;
+
+
+}
+
+
+
+.finalFade{
+
+
+    animation:
+
+    finalFade 2s forwards;
+
+
+}
+
+
+
+@keyframes finalFade{
+
+
+    from{
+
+        opacity:0;
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+    }
+
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- 처음 이미지 -->
+
+<img src="media/image6.png" id="image6">
+
+
+
+<!-- 등장 이미지 -->
+
+<img src="media/image7.png" id="image7">
+
+
+
+<!-- 대사 -->
+
+<div id="dialog">
+
+골계로군. 뭘 일일이 검을 사용해서 없애고 있나.<br>
+
+그저 단순하게, 영압으로 짓이기면 그만인 것을.
+
+</div>
+
+
+
+<!-- 기술명 -->
+
+<div id="spell">
+
+파도 90 흑관
+
+</div>
+
+
+
+
+<!-- 작은 흑관 조각들이 들어갈 공간 -->
+
+<div id="blackBoxContainer"></div>
+
+
+
+<!-- 마지막 검은 화면 -->
+
+<div id="finalBlack"></div>
+
+
+
+
+<script>
+
+
+const image6 =
+document.getElementById("image6");
+
+
+const image7 =
+document.getElementById("image7");
+
+
+const dialog =
+document.getElementById("dialog");
+
+
+const spell =
+document.getElementById("spell");
+
+
+const blackBoxContainer =
+document.getElementById("blackBoxContainer");
+
+
+const finalBlack =
+document.getElementById("finalBlack");
+ 
+
+// 클릭 이벤트
+
+image6.addEventListener("click",()=>{
+
+
+    // image6 제거
+
+    image6.style.opacity="0";
+
+
+    setTimeout(()=>{
+
+        image6.style.display="none";
+
+
+        // image7 등장
+
+        image7.style.opacity="1";
+
+
+    },500);
+
+
+
+    // 대사 등장
+
+    setTimeout(()=>{
+
+
+        dialog.classList.add("fadeIn");
+
+
+    },3500);
+
+
+
+
+
+    // 파도 90 흑관 등장
+
+    setTimeout(()=>{
+
+
+        spell.classList.add("fadeIn");
+
+
+
+    },8000);
+
+
+
+
+
+    // 흑관 작은 조각 생성 시작
+
+    setTimeout(()=>{
+
+
+        createBlackBox();
+
+
+
+    },10500);
+
+
+
+
+
+});
+
+
+
+
+
+
+// =====================================
+// 작은 흑관 조각 생성
+// 아래에서부터 위로 쌓이는 효과
+// =====================================
+
+
+
+function createBlackBox(){
+
+
+    const baseWidth = 35;
+    const baseHeight = 70;
+
+
+
+    const columns = Math.ceil(
+        window.innerWidth / baseWidth
+    );
+
+
+    const rows = Math.ceil(
+        window.innerHeight / baseHeight
+    );
+
+
+
+    let delay = 0;
+
+
+
+    // 아래 줄부터 위로 생성
+
+    for(let row=0; row<rows; row++){
+
+
+        for(let col=0; col<columns; col++){
+
+
+
+            setTimeout(()=>{
+
+
+                const box =
+                document.createElement("div");
+
+
+
+                box.className="blackBox";
+
+
+
+                const randomWidth =
+                Math.random()*45 + 20; // 20~65px
+
+                const randomHeight =
+                Math.random()*90 + 40; // 40~130px
+
+
+                box.style.width =
+                randomWidth+"px";
+
+
+                box.style.height =
+                randomHeight+"px";
+
+
+
+                box.style.left =
+                    (
+                        col * baseWidth
+                        +
+                        Math.random()*50-25
+                    )
+                    +"px";
+
+
+
+                /*
+                    아래에서부터 쌓이기 위해
+                    화면 높이에서 역산
+                */
+
+                box.style.bottom =
+                    (
+                        row * baseHeight
+                        +
+                        Math.random()*50-25
+                    )
+                    +"px";
+                
+                box.style.transform =
+                    `
+                    rotate(${Math.random()*30-15}deg)
+                    `;
+
+
+
+                blackBoxContainer.appendChild(box);
+
+
+
+            },delay);
+
+
+
+            delay += Math.random()+5;
+
+
+        }
+
+
+
+    }
+
+
+
+    // 모든 흑관 조각 생성 후 완전 암전
+
+    setTimeout(()=>{
+
+
+        finalBlack.classList.add(
+            "finalFade"
+        );
+
+
+    },delay+1500);
+
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
