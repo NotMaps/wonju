@@ -3,48 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>실습 페이지</title>
+    <title>20611 박재민</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <style>
+        section {
+                background-color: white;
+                padding: 15px;
+                margin: 20px 0;
+                border-radius: 10px;
+            }
+
+            .card {
+                box-shadow: 0 0 10px gray;
+            }
+
+            .skill {
+                display: inline-block;
+                background-color: gold;
+                color: black;
+                padding: 8px 15px;
+                margin: 5px;
+                border-radius: 20px;
+            }
+
+            .project {
+                border-left: 5px solid blue;
+                padding-left: 15px;
+                margin: 15px;
+            }
+
+            button {
+                background-color: blue;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 10px;
+            }
+
+            button:hover {
+                background-color: purple;
+            }
+        #menubar {
+            background: gold;
+        }
+        #menubar ul {
+            margin: 0;
+            padding: 0;
+            width: 567px;
+        }
+        #menubar ul li {
+            display: inline-block;
+            list-style-type: none;
+            padding: 0px 15px;
+        }
+        #menubar ul li a {
+            color: blue;
+            text-decoration: none;
+        }
+        #menubar ul li a:hover {
+            color: purple
+        }
+        body {
+            width: 700px;
+            margin: 0 auto;
+            font-family: "Jua", sans-serif;
+        }
+
+        table {
+            background-color: white;
+            margin: 0 auto;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        #menubar ul {
+            margin: 0 auto;
+        }
+        #container {
+            width: 700px;
+            margin: 0 auto;
+            background-color: darkgray;
+            padding: 20px;
+        }
+        .info-table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .info-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-table td:first-child {
+            background-color: gold;
+            font-weight: bold;
+            width: 30%;
+            text-align: center;
+        }
+
+        .info-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+
+        .hobby-list {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 0;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .hobby-list li {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .hobby-list li:hover {
+            background-color: #8e44ad;
+            transform: scale(1.1);
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid gold;
+        }
+    </style>
 </head>
 <body>
-    <h1>20611 박재민</h1>
-    <a href="https://wonjugo.gwe.hs.kr/main.do" target="_blank"
-    title="새 탭에서 열기"><img src="media/원주고.jpg" alt="내 고등학교 사진" width="200" height="200"></a>
-    <hr>
+    <div id="container">
+        <nav id="menubar">
+            <ul>
+                <li><a href="#intro">소개</a></li>
+                <li><a href="#infor">기본정보</a></li>
+                <li><a href="#hobby">취미</a></li>
+                <li><a href="#skil">기술 스택</a></li>
+                <li><a href="#proj">프로젝트</a></li>
+                <li><a href="#goal">목표</a></li>
+                <li><a href="#call">연락처</a></li>
+            </ul>
+        </nav>
+        <h1>20611 박재민</h1>
+        <a href="https://wonjugo.gwe.hs.kr/main.do" target="_blank"
+        title="새 탭에서 열기"><img src="media/원주고.jpg" alt="내 고등학교 사진" width="200" height="200"></a>
+        <hr>
 
-    <h2>소개</h2>
-    <p>안녕하세요. 원주고등학교 2학년 6반 박재민입니다.</p>
-    <h3>나의 취미</h3>
-    <ul>
-        <li>게임 하기</li>
-        <li>애니 보기</li>
-        <li>피규어 모으기</li>
-    </ul>
+        <section class="card">
+            <h2 id="intro">소개</h2>
+        <p>
+            저는 프로그래밍과 정보 보안 분야에 관심이 있는 학생입니다.
+            새로운 기술을 배우는 것을 좋아하며,
+            문제를 해결하는 과정에서 성취감을 느낍니다.
+        </p>
+
+        <p>
+            장래에는 보안 취약점을 분석하고 안전한 시스템을 만드는
+            정보 보안 전문가가 되는 것이 목표입니다.
+        </p>
+    </section>
     <hr>
-    <h3>기본 정보</h3>
-    <table border="1">
+        <section class="card">
+    <h2 id="infor">기본 정보</h2>
+
+    <table class="info-table">
         <tr>
             <td>이름</td>
             <td>박재민</td>
         </tr>
+
         <tr>
             <td>학번</td>
             <td>20611</td>
         </tr>
+
         <tr>
-            <td>관심분야</td>
+            <td>소속</td>
+            <td>원주고등학교 2학년 6반</td>
+        </tr>
+
+        <tr>
+            <td>관심 분야</td>
             <td>프로그래밍, 정보 보안</td>
         </tr>
+
         <tr>
-            <td>장래희망</td>
+            <td>장래 희망</td>
             <td>정보 보안 전문가</td>
         </tr>
-    </table>
-    <hr>
-    <h2>연락처</h2>
-    <ul>
-        <li>Email : ilikejune01@gmail.com</li>
-        <li>GitHub : <a href="https://github.com/NotMaps" target="_blank"
-    title="새 탭에서 열기">https://github.com/NotMaps</a></li>
+        </table>
+    </section>
+        <hr>
+        <section class="card">
+    <h2 id="hobby">나의 취미</h2>
+
+    <ul class="hobby-list">
+        <li>🎮 게임 하기</li>
+        <li>📺 애니 보기</li>
+        <li>🧸 피규어 모으기</li>
+        <li>🎨 그림 그리기</li>
     </ul>
+</section>
+        <hr>
+        <section class="card">
+            <h2 id="skil">기술 스택</h2>
+
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">Python</span>
+            <span class="skill">GitHub</span>
+            <span class="skill">Unity</span>
+            <span class="skill">정보보안</span>
+
+        </section>
+        <hr>
+        <section class="card">
+            <h2 id="proj">프로젝트</h2>
+
+            <div class="project">
+                <h3>개인 포트폴리오 웹사이트</h3>
+                <p>
+                    HTML과 CSS를 활용하여 제작한 자기소개 웹페이지입니다.
+                    웹 구조와 스타일 작성 방법을 학습했습니다.
+                </p>
+            </div>
+
+
+            <div class="project">
+                <h3>정보 보안 공부</h3>
+                <p>
+                    네트워크, 암호화, 웹 보안 등
+                    정보 보안 관련 내용을 공부하고 있습니다.
+                </p>
+            </div>
+
+        </section>
+        <hr>
+        <section class="card">
+            <h2 id="goal">나의 목표</h2>
+
+            <ol>
+                <li>프로그래밍 실력 향상</li>
+                <li>정보 보안 관련 지식 습득</li>
+                <li>다양한 프로젝트 경험 쌓기</li>
+                <li>보안 전문가로 성장하기</li>
+            </ol>
+
+        </section>
+        <hr>
+        <section class="card">
+            <h2 id="call">연락처</h2>
+            <p>
+                Email : ilikejune01@gmail.com
+            </p>
+            <p>GitHub : <a href="https://github.com/NotMaps" target="_blank"
+        title="새 탭에서 열기">https://github.com/NotMaps</a>
+
+        </section>
+        
+    </div>
 </body>
 </html>
