@@ -411,6 +411,8 @@ document.getElementById("blackBoxContainer");
 
 const finalBlack =
 document.getElementById("finalBlack");
+
+let blackScreenReady = false;
  
 
 // 클릭 이벤트
@@ -606,20 +608,31 @@ function createBlackBox(){
 
     // 모든 흑관 조각 생성 후 완전 암전
 
+    // 모든 흑관 조각 생성 후 완전 암전
+
+setTimeout(()=>{
+
+    finalBlack.classList.add("finalFade");
+
+    // 암전이 끝난 후 클릭 가능
     setTimeout(()=>{
+        blackScreenReady = true;
+        finalBlack.style.pointerEvents = "auto";
+        finalBlack.style.cursor = "pointer";
+    },2000);   // finalFade 애니메이션 시간(2초)
 
-
-        finalBlack.classList.add(
-            "finalFade"
-        );
-
-
-    },delay+1500);
+},delay+1500);
 
 
 
 }
+finalBlack.addEventListener("click", () => {
 
+    if(!blackScreenReady) return;
+
+    window.location.href = "경화수월.html";   // 이동할 HTML 파일명
+
+});
 
 
 </script>
